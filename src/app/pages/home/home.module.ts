@@ -10,18 +10,7 @@ import { HomePage } from './home.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
-    component: HomePage,
-    children: [
-      {
-        path: 'details',
-        loadChildren: '../details/details.module#DetailsPageModule'
-      }
-    ]
+    component: HomePage
   }
 ];
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { YoutubeSearchService } from './../../services/youtube-search.service';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-
+import { Router } from '@angular/router';
+import { SongService } from '../../services/song.service';
 
 @Component({
   selector: 'app-home',
@@ -10,28 +10,24 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class HomePage {
 
-  private videos: Array<any>;
+  private songs: Array<any>;
   private skeletonElements = [0, 1, 2, 3, 4];
-
-  private selectedSong: any = {};
-  private selectedSongUrl: SafeUrl;
 
   constructor(
     private youtubeSearch: YoutubeSearchService,
-    private domSanitizer: DomSanitizer,
+    private router: Router,
+    private songService: SongService,
   ) {
 
   }
 
   async ionViewDidEnter() {
-    this.videos = await this.youtubeSearch.searchByTitle('talco bella ciao');
-    console.log(this.videos);
+    this.songs = await this.youtubeSearch.searchByTitle('talco bella ciao');
   }
 
-  selectSong(song: any) {
-    this.selectedSong = song;
-    const youtubeUrl = 'https://www.youtube.com/watch?v=' + song.id;
-    this.selectedSongUrl = this.domSanitizer.bypassSecurityTrustUrl('http://apps.ene.es:23700/get-audio?url=' + youtubeUrl);
+  playSong(song: any) {
+    this.songService.set(song);
+    this.router.navigateByUrl('/player');
   }
 
 }

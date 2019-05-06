@@ -20,18 +20,18 @@
   </audio>
 
   <ion-list>
-    <ion-item *ngFor="let video of videos" (click)="selectSong(video)">
+    <ion-item *ngFor="let song of songs" (click)="playSong(song)">
       <ion-thumbnail slot="start">
-        <img [src]="video.thumbnailUrl">
+        <img [src]="song.thumbnailUrl">
       </ion-thumbnail>
       <ion-label>
-        <h2>{{video.title}}</h2>
-        <p>{{video.description}}</p>
+        <h2>{{song.title}}</h2>
+        <p>{{song.description}}</p>
       </ion-label>
     </ion-item>
   </ion-list>
 
-  <ion-list *ngIf="!videos">
+  <ion-list *ngIf="!songs">
     <ion-item *ngFor="let element of skeletonElements">
       <ion-avatar slot="start">
         <ion-skeleton-text animated></ion-skeleton-text>
