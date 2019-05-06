@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
+    <ion-title>
+      MusicApp
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <audio controls *ngIf="selectedSongUrl">
+    <source [src]="selectedSongUrl" type="audio/mp4">
+  </audio>
+
+  <ion-list>
+    <ion-item *ngFor="let video of videos" (click)="selectSong(video)">
+      <ion-thumbnail slot="start">
+        <img [src]="video.thumbnailUrl">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{video.title}}</h2>
+        <p>{{video.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="!videos">
+    <ion-item *ngFor="let element of skeletonElements">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-menu>
+  <ion-content>
+    <div class="menu-header">
+      <ion-menu-toggle auto-hide="false">
+        <ion-item [routerLink]="['/main/profile']">
+          <ion-avatar slot="start">
+            <img src="https://randomuser.me/api/portraits/men/18.jpg">
+          </ion-avatar>
+          <ion-label>
+            <h2>Sample user</h2>
+            <p>Ver perfil</p>
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </div>
+    <ion-list>
+      <ion-menu-toggle auto-hide="false">
+        <ion-item button [routerLink]="['/main/home']">
+          <ion-icon slot="start" name='home'></ion-icon>
+          <ion-label>
+            Home
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet main></ion-router-outlet>
