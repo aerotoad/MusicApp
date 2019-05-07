@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+
+declare var apikeys;
 
 @Injectable({
   providedIn: 'root'
 })
 export class YoutubeSearchService {
 
-  private apiKey = '[ADD_YOUTUBE_DATA_API_KEY_HERE]';
+  private apiKey = apikeys.YOUTUBE_API_KEY;
   private apiUrl = 'https://www.googleapis.com/youtube/v3/search';
 
   constructor(

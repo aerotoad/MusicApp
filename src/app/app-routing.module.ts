@@ -10,7 +10,8 @@ if (loggedInUser) {
 const routes: Routes = [
   { path: '', redirectTo: entryRoute, pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
-  { path: 'main', loadChildren: './pages/main/main.module#MainPageModule' },
+  { path: 'main', loadChildren: './pages/main/main.module#MainPageModule' },  { path: 'player', loadChildren: './pages/player/player.module#PlayerPageModule' },
+
 ];
 
 @NgModule({
