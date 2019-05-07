@@ -8,5 +8,30 @@
 </ion-header>
 
 <ion-content fullscreen="true">
+  <div class="blur-bg-img" *ngIf="song" [ngStyle]="{background: 'url(' + song.thumbnailUrl + ')'}">
+    <div class="blur-bg"></div>
+  </div>
 
+  <div class="player-container">
+    <div class="poster-container" *ngIf="song" [ngStyle]="{background: 'url(' + song.thumbnailUrl + ')'}"></div>
+    <p *ngIf="song">{{song.title}}</p>
+    <ion-progress-bar *ngIf="loadComplete" [value]="progress"></ion-progress-bar>
+    <ion-progress-bar *ngIf="!loadComplete" type="indeterminate" reversed="true"></ion-progress-bar>
+    <ion-item class="time-hints-item" mode="ios">
+      <ion-note slot="start">{{currentTime}}</ion-note>
+      <ion-note slot="end">{{duration}}</ion-note>
+    </ion-item>
+    <div class="ion-text-center">
+        <ion-fab-button color="dark" class="play-button" *ngIf="loadComplete" (click)="playPause()">
+          <ion-icon name="play" *ngIf="paused"></ion-icon>
+          <ion-icon name="pause" *ngIf="!paused"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="dark" class="play-button" *ngIf="!loadComplete">
+          <ion-spinner></ion-spinner>
+        </ion-fab-button>
+    </div>
+  </div>
+
+
+<audio [src]="streamUrl" autoplay="true" class="player-audio-element" id="playerAudioElement" (timeupdate)="updateTime()" (canplay)="startedPlaying()"></audio>
 </ion-content>

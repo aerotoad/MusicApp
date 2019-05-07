@@ -22,7 +22,7 @@ export class HomePage {
   }
 
   async ionViewDidEnter() {
-    this.songs = await this.youtubeSearch.searchByTitle('talco bella ciao');
+    this.songs = await this.youtubeSearch.searchByTitle('Talco bella ciao');
   }
 
   playSong(song: any) {
